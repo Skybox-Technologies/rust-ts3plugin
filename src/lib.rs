@@ -1,4 +1,4 @@
-//! TeamSpeak 3.6 updates the plugin api version to 26.  
+//! TeamSpeak 3.6 updates the plugin api version to 26.
 //! Version 0.3 is compatible with this version.
 //!
 //! At the moment, not all methods that are exposed by the TeamSpeak API are
@@ -998,20 +998,10 @@ impl<'a> Connection<'a> {
 		}
 	}
 
-	/*/// The connection properties that are only available for our own client.
-	pub fn get_own_data(&self) -> Option<&OwnConnectionData> {
-		self.data.ok().and_then(|data| data.own_data.as_ref())
+	/// TODO: separate into different structs
+	pub fn get_data(&self) -> Option<&ConnectionData> {
+		self.data.ok()
 	}
-
-	/// The connection properties that are only available for server queries.
-	pub fn get_serverquery_data(&self) -> Option<&ServerqueryConnectionData> {
-		self.data.ok().and_then(|data| data.serverquery_data.as_ref())
-	}
-
-	/// The connection properties that are only available on request.
-	pub fn get_optional_data(&self) -> Option<&OptionalConnectionData> {
-		self.data.ok().map(|data| &data.optional_data)
-	}*/
 
 	/// Send a private message to this connection.
 	pub fn send_message<S: AsRef<str>>(&self, message: S) -> Result<(), Error> {

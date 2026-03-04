@@ -34,7 +34,7 @@ pub(crate) fn create() -> Vec<Struct<'static>> {
 	let builder_string = builder.type_s("String");
 	let builder_u64 = builder.type_s("u64");
 
-	let client_b = builder.enum_name("ClientProperties").functions(client_functions);
+	let client_b = builder.enum_name("ClientProperties").functions(client_functions).public(true);
 	let client_b_string = client_b.type_s("String");
 	let client_b_i32 = client_b.type_s("i32");
 
@@ -50,6 +50,7 @@ pub(crate) fn create() -> Vec<Struct<'static>> {
 		.api_name("Connection")
 		.do_api_impl(true)
 		.do_properties(true)
+		.public(true)
 		.constructor_args("server_id: ServerId, id: ConnectionId")
 		.extra_property_list(vec![(
 			"Channel<'a>".into(),
